@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>Astra / visual studies</title
+  ><style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 6vw;
+      background: #10110f;
+      color: #edece6;
+      font:
+        16px Arial,
+        sans-serif;
+    }
+    header {
+      max-width: 740px;
+      margin-bottom: 70px;
+    }
+    small {
+      font: 11px monospace;
+      letter-spacing: 0.16em;
+      color: #b3ad9c;
+    }
+    h1 {
+      font-size: clamp(40px, 7vw, 90px);
+      font-weight: 400;
+      letter-spacing: -0.06em;
+      margin: 20px 0;
+    }
+    p {
+      line-height: 1.6;
+      color: #a5a69e;
+      max-width: 550px;
+    }
+    article {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 6vw;
+      align-items: center;
+      border-top: 1px solid #33352d;
+      padding: 35px 0;
+    }
+    h2 {
+      font-weight: 400;
+      font-size: 30px;
+    }
+    .art {
+      height: 360px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #090c0b;
+      position: relative;
+    }
+    .six {
+      font-size: 370px;
+      font-weight: 650;
+      line-height: 1;
+      background: repeating-linear-gradient(
+        27deg,
+        #e9e4d0 0 1px,
+        #575543 1px 2px,
+        transparent 2px 4px
+      );
+      background-clip: text;
+      color: transparent;
+      transform: rotate(-7deg);
+      animation: breathe 5s ease-in-out infinite;
+    }
+    .orb {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: #0b0d0b;
+      box-shadow:
+        inset -7px 1px 18px #c4b990,
+        15px -3px 40px #9a896455;
+      transform: rotate(-35deg);
+    }
+    .star {
+      width: 290px;
+      height: 290px;
+      background: repeating-radial-gradient(
+        ellipse,
+        #eee9d5 0 1px,
+        transparent 1px 5px
+      );
+      clip-path: polygon(
+        50% 0,
+        60% 39%,
+        100% 50%,
+        60% 61%,
+        50% 100%,
+        40% 61%,
+        0 50%,
+        40% 39%
+      );
+      animation: turn 30s linear infinite;
+    }
+    a {
+      color: #e7dbc0;
+    }
+    @keyframes breathe {
+      50% {
+        transform: rotate(-3deg) scale(0.95);
+      }
+    }
+    @keyframes turn {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    @media (max-width: 650px) {
+      article {
+        grid-template-columns: 1fr;
+      }
+      .art {
+        height: 300px;
+      }
+      .six {
+        font-size: 300px;
+      }
+    }
+  </style>
+  <header>
+    <small>ASTRA / VISUAL STUDIES</small>
+    <h1>One symbol.<br />A different arrival, every time.</h1>
+    <p>
+      Three directions explored before building. Direction A is selected for the
+      main display, with B and C becoming its quieter transformations.
+    </p>
+  </header>
+  <article>
+    <div class="art"><div class="six">6</div></div>
+    <div>
+      <small>A / SELECTED</small>
+      <h2>Living numeral</h2>
+      <p>
+        A 6 built from thousands of moving particles. An arrival breaks the
+        form, reveals a name, then adds a star to the room. Most recognizable
+        from across an event hall.
+      </p>
+    </div>
+  </article>
+  <article>
+    <div class="art"><div class="orb"></div></div>
+    <div>
+      <small>B / SECONDARY FORM</small>
+      <h2>A little gravity</h2>
+      <p>
+        A turning celestial body with a luminous edge. Each arrival makes an
+        orbit. A quiet moment between the larger gestures.
+      </p>
+    </div>
+  </article>
+  <article>
+    <div class="art"><div class="star"></div></div>
+    <div>
+      <small>C / SECONDARY FORM</small>
+      <h2>Stellar signature</h2>
+      <p>
+        A four-point star with a different internal pattern for each guest. The
+        star can change its geometry, motion and warmth without losing its
+        identity.
+      </p>
+    </div>
+  </article>
+  <p><a href="/">Open the working display ↗</a></p>
+</html>

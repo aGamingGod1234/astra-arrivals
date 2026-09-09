@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+data/
+output/
+.playwright/
+.playwright-cli/
+luma-schema-reference.md
+*.log
+*.tar.gz
