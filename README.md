@@ -6,14 +6,14 @@ The [public hosted display](https://astra-arrivals-singapore.agaminggod12345.cha
 
 ## Try the display
 
-Requires Node 22.12+ or Node 24. Tested here with Node 24.
+Use Node 24 LTS (also selected by `.nvmrc`). Node 22.12+ on the 22.x line and Node 26 are also supported. CI checks Node 22.12, 24 and 26; use an [LTS release](https://nodejs.org/en/about/previous-releases) for the event server.
 
 ```powershell
 npm ci
 npm run dev
 ```
 
-Open `http://127.0.0.1:4316`. The display starts with no fictional arrivals. An ambient cinematic plays after 15 seconds, then every 15 seconds while the room is quiet. Ambient events never add names or increase the count. Optional automatic demo guests can be enabled in settings. Use settings to enter your own name, turn off automatic arrivals or reset the demo.
+Open `http://127.0.0.1:4316`. For live-mode development, configure `.env` as described below and run `npm start` in a second terminal; Vite forwards `/api` requests to `http://127.0.0.1:4317`. The display starts with no fictional arrivals. An ambient cinematic plays after 15 seconds, then every 15 seconds while the room is quiet. Ambient events never add names or increase the count. Optional automatic demo guests can be enabled in settings. Use settings to enter your own name, turn off automatic arrivals or reset the demo.
 
 | Control                   | Action                                              |
 | ------------------------- | --------------------------------------------------- |
@@ -68,7 +68,15 @@ Each entrance names the event beneath the guest name and explains what it does i
 
 ## Verification
 
-`npm test` checks raw-body signatures, expiry, event filtering, real check-in timestamps, duplicate deliveries, authentication, privacy and persistence through a server restart. The cinematic director tests cover the 15-second idle deadline, complete queued entrances, guest priority, pause, repeatable name-based event selection and different signatures for same-name guests. Physics tests cover contact timing, continued drift, both kilonova shells, delayed restoration and frame-rate independence. Browser checks cover all nine events, custom names, queued arrivals, mobile layout, settings and reduced motion. The original Luma checks cover live-mode recovery.
+```sh
+npm test
+npm run build
+npm run test:smoke
+```
+
+GitHub Actions runs these commands on Node 22.12, 24 and 26. The production smoke test starts the actual Node server entry point on an ephemeral local port with fictional credentials and temporary data, then checks the built page, bundled assets and signed check-in delivery. It never contacts Luma.
+
+`npm test` checks raw-body signatures, expiry, event filtering, real check-in timestamps, duplicate deliveries, authentication, privacy and persistence through a server restart. The cinematic director tests cover the 15-second idle deadline, complete queued entrances, guest priority, pause, repeatable name-based event selection and different signatures for same-name guests. Physics tests cover contact timing, continued drift, both kilonova shells, delayed restoration and frame-rate independence. The original manual browser checks covered all nine events, custom names, queued arrivals, mobile layout, settings, reduced motion and live-mode recovery; these are not part of `npm test`. A real organizer-account rehearsal remains required before an event.
 
 ## References
 
