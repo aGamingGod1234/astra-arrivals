@@ -38,7 +38,12 @@ export function createEventServer({
       "Content-Security-Policy",
       "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'",
     );
-    const url = new URL(req.url, "http://localhost");
+    let url;
+    try {
+      url = new URL(req.url, "http://localhost");
+    } catch {
+      return send(res, 400, { error: "Invalid URL" });
+    }
     if (url.pathname === "/api/status")
       return send(res, 200, {
         liveConfigured: Boolean(secret && eventId && screenKey),
@@ -165,7 +170,7 @@ if (
     server.headersTimeout = 10000;
     server.listen(port, process.env.HOST || "127.0.0.1", () =>
       console.log(
-        `Astra event display: http://127.0.0.1:${port}. Waiting for signed Luma check-ins.`,
+        `Astra event display: http://127.0.0.1:${server.address().port}. Waiting for signed Luma check-ins.`,
       ),
     );
   }

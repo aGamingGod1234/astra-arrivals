@@ -6,10 +6,11 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: { proxy: { "/api": "http://127.0.0.1:4317" } },
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: (id) =>
-          id.includes("node_modules/three/") ? "three" : undefined,
+        codeSplitting: {
+          groups: [{ name: "three", test: /[\\/]node_modules[\\/]three[\\/]/ }],
+        },
       },
     },
   },
